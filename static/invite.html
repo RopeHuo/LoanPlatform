@@ -1,0 +1,253 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>红包</title>
+  <style type="text/css">
+  body {
+    padding: 0;
+    margin: 0;
+    color: #666;
+    background: #F7F7FA;
+  }
+
+  .redpack {
+    height: 450px;
+    position: absolute;
+    background: #f45540;
+    width: 300px;
+    border-radius: 10px;
+    margin-left: -150px;
+    margin-top: -250px;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+  }
+
+  .topcontent {
+    height: 350px;
+    border: 1px solid #f36050;
+    background-color: #f36050;
+    border-radius: 10px 10px 50% 50% / 10px 10px 15% 15%;
+    box-shadow: 0px 2.5px 0px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  #redpack-open {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ebcd99;
+    background-color: #ebcd99;
+    border-radius: 50%;
+    margin-left: 32%;
+    display: inline-block;
+    margin-top: -50px;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
+    font-size: 40px;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  .img_name {
+    color: #f5e6ad;
+    margin-top: 6em;
+  }
+
+  .img_name img {
+    width: 1.3em;
+    margin-left: 20%;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+    margin-bottom: -.3em
+  }
+
+  #model .img_name img {
+    margin-left: 30%;
+  }
+
+  .gongxi {
+    font-size: 1.3em;
+    color: #f5e6ad;
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
+  .content {
+    height: 33em;
+    border: 1px solid #f55640;
+    background-color: #f55640;
+    border-radius: 10px 10px 50% 50% / 0px 0px 15% 15%;
+    /*box-shadow: 0px 4px 0px -1px rgba(0,0,0,0.2);*/
+  }
+
+  .content .img_name {
+    font-size: 1.3em;
+    margin-top: 3em;
+  }
+
+  .content .gongxi {
+    font-size: 1em;
+    margin-top: 1em;
+  }
+
+  .title {
+    font-size: 1.5em;
+    text-align: center;
+    padding-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  .money {
+    color: #f5e6ad;
+    text-align: center;
+    font-size: 4em;
+    margin-top: 1em;
+  }
+
+  .money small {
+    font-size: 0.5em;
+  }
+
+  .link {
+    content: "";
+    /*position: absolute;*/
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #ccc;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+  }
+
+  #explain {
+    text-align: center;
+    color: #f5e6ad;
+    margin: 4em auto 1em auto;
+  }
+
+  .strategy h3 {
+    text-align: center;
+  }
+
+  .strategy p {
+    padding: 0 1em;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5em;
+  }
+
+  #box {
+    display: none;
+  }
+
+  .img {
+    width: 35%;
+    display: block;
+    margin: auto;
+  }
+
+  #mask {
+    position: absolute;
+    opacity: 0.9;
+    background-color: #999;
+    opacity: 0.8;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div id="mask"></div>
+  <div id="model">
+    <div class='redpack'>
+      <div class="topcontent">
+        <div class="img_name"><img src="img/icon.png">银掌通的红包</div>
+        <div class="gongxi">恭喜发财,大吉大利</div>
+      </div>
+      <div id="redpack-open">開</div>
+    </div>
+  </div>
+  <div id="box">
+    <div class="content">
+      <div class="img_name"><img src="img/icon.png">银掌通的免息金红包</div>
+      <!-- <div class="gongxi">恭喜发财,大吉大利</div> -->
+      <div class="money"><small>￥</small>1000.00</div>
+      <div id="explain">领取成功，长按识别二维码使用</div>
+      <img src="img/qrcode_4.png" class="img">
+    </div>
+    <div class="strategy">
+      <h3>使用攻略</h3>
+      <p>免息金是闪刷推出新用户福利，用于取现还款交易时抵扣对应金额的交易服务费。</p>
+      <p>使用免息金，交易完成后服务费立即返现到您的钱包中，可随时提现。</p>
+      <p>关注公众号 银掌通 即可使用免息金 体验安全、方便、快捷的信用卡生活
+      </p>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+var isWeixin = navigator.userAgent.toLowerCase().indexOf('micromessenger') != -1;
+var explain = document.getElementById('explain');
+var box = document.getElementById('box');
+var mask = document.getElementById('mask')
+// var show_inp = document.getElementById('show_inp');
+let code = '';
+let user_id = '';
+if (location.href.indexOf('u=') != -1) {
+  user_id = location.href.match(/u=([^&]+)/)[1];
+} else {
+  // alert('免息金红包不存在');
+  // location.href = '/'
+}
+if (isWeixin) {
+  let _url = location.href;
+  _url = encodeURI(_url);
+  if (location.href.indexOf('code=') != -1) {
+    code = location.href.match(/code=([^&]+)/)[1];
+  }
+  if (!code) {
+    location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx93047f279e50497d&redirect_uri=${_url}&response_type=code&scope=snsapi_userinfo`;
+  }
+} else {
+  explain.innerHTML = '领取成功，扫描二维码使用'
+}
+var draw_btn = document.getElementById('redpack-open');
+draw_btn.addEventListener('click', function() {
+  var xmlhttp = new XMLHttpRequest();
+  var post_data = {
+    user_id: user_id
+  };
+  if (isWeixin) {
+    post_data.code = code;
+  } else {
+    let value = prompt('请输入正确手机号');
+    if (!value) {
+      alert('请输入手机号');
+      return;
+    }
+    post_data.mobile = value;
+  }
+  xmlhttp.open("POST", "/api/coupon/get", true);
+  xmlhttp.setRequestHeader("Content-Type", "application/json");
+  xmlhttp.send(JSON.stringify(post_data));
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      box.style.display = 'block';
+      model.style.display = 'none';
+      mask.style.display = 'none';
+    } else if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
+      alert(xmlhttp.responseText)
+    }
+  }
+})
+
+</script>
+
+</html>
